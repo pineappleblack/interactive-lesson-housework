@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Интерактивный график о времени на домашние дела по данным Росстата">
+    <title>Кто больше занимается домашними делами</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="assets/matter.min.js"></script>
+    <script defer src="assets/d3-selection.min.js"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <main>
+      <figure class="figure" aria-labelledby="housework-title">
+        <h1 id="housework-title">Кто больше занимается домашними делами</h1>
+        <p class="subtitle">Часов в неделю на работу по дому, 2024 год</p>
+        <svg id="chart" class="chart" role="img" aria-label="Две кучки шариков: девочка 10–11 лет и папа ребёнка до 7 лет">
+          <desc>Шарики падают под действием гравитации. Девочка занимается домашними делами 6,5 часа в неделю, папа — 3,6 часа.</desc>
+          <defs><clipPath id="pile-clip"><rect id="pile-clip-rect"></rect></clipPath></defs>
+          <line id="baseline" stroke="#A9A9AF" stroke-width="1"></line>
+          <circle id="legend-dot" fill="#645D9F"></circle>
+          <text id="legend-label" class="legend">≈ 5 минут</text>
+          <text id="girl-value" class="value girl-value" text-anchor="middle">6,5 часа</text>
+          <text id="dad-value" class="value dad-value" text-anchor="middle">3,6 часа</text>
+          <g clip-path="url(#pile-clip)"><g id="girl-dots"></g><g id="dad-dots"></g></g>
+          <g class="category-labels" text-anchor="middle">
+            <text id="girl-label-1">Девочка</text><text id="girl-label-2">10–11 лет</text>
+            <text id="dad-label-1">Папа ребёнка</text><text id="dad-label-2">до 7 лет</text>
+          </g>
+        </svg>
+        <div id="control" class="control">
+          <label for="guess">Как вы думаете, сколько у папы?</label>
+          <div class="control-row">
+            <button id="check" type="button" disabled>Проверить</button>
+            <div class="slider-wrap">
+              <div class="slider-block">
+                <input id="guess" type="range" min="0" max="144" step="2" value="0" aria-valuetext="0 ч">
+                <output id="guess-value" for="guess">0 ч</output>
+              </div>
+              <span class="range-end">До 12 часов</span>
+            </div>
+          </div>
+        </div>
+        <div id="result" class="result" aria-live="polite" hidden></div>
+        <p class="note">Значение 3,6 часа округлено Росстатом; число шариков округлено до ближайших 5 минут.</p>
+        <p class="source">Источник: <a href="https://rosstat.gov.ru/" target="_blank" rel="noopener noreferrer">Росстат, выборочное наблюдение использования суточного фонда времени населением</a></p>
+      </figure>
+    </main>
+  </body>
+</html>
