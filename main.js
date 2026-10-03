@@ -4,8 +4,8 @@
 
   const { Bodies, Body, Composite, Engine } = Matter;
   const GIRL_DOTS = 78;
-  const DAD_DOTS = 43;
-  const DAD_MINUTES = 216;
+  const DAD_DOTS = 44; // 218,8 минуты из таблицы 2.4 Росстата → 43,8 шарика.
+  const DAD_MINUTES = 220; // Ответ сверяем с 44 шариками по 5 минут; это положение доступно на ползунке.
   const MINUTES_PER_DOT = 5;
   const MAX_DOTS = 144;
   const GIRL_COLOR = '#645D9F';
